@@ -1,0 +1,621 @@
+// wap to write the combinations
+
+#include <stdio.h>
+#include<math.h>
+int combo(int n,int r)
+{
+    int s =fact(n)/(fact(n-r)*fact(r));
+    return s;
+    
+}
+int fact(int x)
+{
+    int factos=1;
+    for(int i=x;i>0;i--)
+    {
+         factos= factos*i;
+    }
+    return factos;
+}
+
+int main()
+{ 
+    int n,r,flag=0;
+    scanf("%d%d",&n,&r);
+    int combination=combo(n,r);
+    printf("%d",combination);
+    //for(int k=1;k<=n/2;k++)
+    //{
+        
+    //printf("%d",rev);
+    return 0;
+}
+
+// wa recursive func to sum of the digits of the num...
+#include <stdio.h>
+int sum(int n)
+{
+   
+    if(n<10)
+      return n  ;
+    else 
+        return sum(n/10)+n%10;
+}
+
+int main()
+{
+    int n;
+   scanf("%d",&n);
+    int result =sum(n);
+    printf("%d",result);
+    return 0;
+}
+
+// wa recursive func to calculate x^y;
+#include <stdio.h>
+double powr(double x,double y)
+{
+  if(y>0){
+    if(y==1)
+      return x  ;
+    else 
+        return powr(x,y-1)*x;
+    }
+else{
+if(y==-1)
+      return 1/x  ;
+    else 
+        return powr(x,y+1)*1/x;
+
+}
+}
+
+int main()
+{
+    int x,y;
+   scanf("%d%d",&x,&y);
+    double result =powr(x,y);
+    printf("%d",result);
+    return 0;
+}
+
+
+// wa recursive func to calculate nth fibonacci;
+#include <stdio.h>
+int fibo(int x)
+{
+  //  0 1 1 2 3 5 8 13
+  if(x==1 || x==2)
+    return x-1;
+else
+    return fibo(x-1)+fibo(x-2);
+ 
+
+}
+
+
+
+// wap to find the index of he greatest no;
+#include<stdio.h>
+#define MAX 100
+
+int main()
+{ 
+    int size;
+    scanf("%d",&size);
+    int arr[MAX];
+    int n=0;
+    int max=arr[0];
+    for(int i=0;i<size;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    for(int i=1;i<size;i++)
+    {
+       if(arr[0]<arr[i])
+       {
+           arr[0]=arr[i];
+              n=i;
+       }
+       
+       
+    }
+    
+    printf("%d",n);
+    
+}
+
+
+?? pretty old school programs
+
+// wap to rotate an array element by one position towards right
+#include<stdio.h>
+#define MAX 100
+
+int main()
+{ 
+    int size;
+    scanf("%d",&size);
+    int arr[size];
+
+    for(int i=0;i<size;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+   int temp = arr[size-1];
+    
+    for(int i=0;i<size-1;i++) // a reverse loop ca be done in this situation
+    {
+        // 1 2 3 4 5 ----> 5 1 2 3 4
+        arr[size-1-i]=arr[size-2-i];
+      
+       
+    }
+    arr[0]=temp;
+    
+    for(int i=0;i<size;i++){ printf("%d ",arr[i]);}
+    
+
+return 0;
+   
+    
+}
+
+//more genaralized approach
+// wap to rotate an array element by nth position towards right
+#include<stdio.h>
+#define MAX 100
+
+int main()
+{ 
+    int size;
+    scanf("%d",&size);
+    int arr[size];
+    int times;
+    scanf("%d",&times);
+
+    for(int i=0;i<size;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    for(int j=1;j<=times;j++){
+   int temp = arr[size-1];
+    
+    for(int i=0;i<size-1;i++)
+    {
+        // 1 2 3 4 5 ----> 5 1 2 3 4
+        arr[size-1-i]=arr[size-2-i];
+      
+       
+    }
+    arr[0]=temp;
+    }
+    
+    for(int i=0;i<size;i++){ printf("%d ",arr[i]);}
+    
+   
+    
+}
+
+//optimal approach for making this question
+
+//insertion sort
+
+
+#include<stdio.h>
+#define MAX 100
+
+int main()
+{ 
+    int size;
+    scanf("%d",&size);
+    int arr[size];
+   
+
+    for(int i=0;i<size;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+   
+    for(int i=1;i<size;i++)
+    {
+      int temp=arr[i];
+        for(int j=i-1;j<=0;j--)  //i=2   0 1 2
+        {
+            if(arr[j]>temp){
+                arr[j+1]=arr[j];
+            }
+           else
+              break;
+        }
+        arr[j+1]=temp;
+        
+    }
+    
+    for(int i=0;i<size;i++)
+    { printf("%d ",arr[i]);
+        
+    }
+    
+   
+    
+}
+
+//length of the string---------------
+#include<stdio.h>
+#define MAX 100
+ int lengthStr(char s[]){
+     int result=0;
+     for(int i=0;s[i]!='\0';i++){
+         result++;
+     }
+     return result;
+ }
+
+int main()
+{
+    //int size;
+    char arr[MAX];
+    //scanf("%d",&size);
+    scanf("%s",arr);
+    int result = lengthStr(arr);
+    printf("%d",result);
+
+    return 0;
+}
+//string reverse------------
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ char *revStr(char s[]){
+     char s1[MAX];
+     int l=strlen(s);
+     for(int i=0;i<l;i++){
+         s1[l-1-i]=s[i];
+     }
+     for(int i=0;s[i]!=0;i++){
+         s[i]=s1[i];
+     }
+     return s;
+ }
+
+int main()
+{
+    //int size;
+    char arr[MAX];
+    //scanf("%d",&size);
+    scanf("%s",arr);
+     
+    printf("%s",revStr(arr));
+
+    return 0;
+}
+
+***** we can nort return s1 because it is local
+***** we can also do it by  swapping logic
+//doing uppercase to string
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ char *uprStr(char s[]){
+     //char s1[MAX];
+     int l=strlen(s);
+     for(int i=0;i<l;i++){
+         if(s[i]>='a' && s[i]<='z');
+         s[i]=(int)(s[i])-32;
+     }
+     
+     return s;
+ }
+
+int main()
+{
+    //int size;
+    char arr[MAX];
+    //scanf("%d",&size);
+    scanf("%s",arr);
+     
+    printf("%s",uprStr(arr));
+
+    return 0;
+}
+//a function to count vowels in a given string
+
+brute-------------
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ int vowel(char s[]){
+     //char s1[MAX];
+     int count=0;
+     int l=strlen(s);
+     for(int i=0;i<l;i++){
+         if(s[i]=='a' || s[i]=='i' || s[i]=='e' ||s[i]=='o' ||s[i]=='u' ||s[i]=='A' || s[i]=='I' || s[i]=='E' ||s[i]=='O' ||s[i]=='U')
+            count++;
+     }
+     
+     return count;
+ }
+
+int main()
+{
+    //int size;
+    char arr[MAX];
+    //scanf("%d",&size);
+    scanf("%s",arr);
+     
+    printf("%d",vowel(arr));
+
+    return 0;
+}
+-------better solution---------
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ int vowel(char s[]){
+     char s1[]="aeiouAEIOU";
+     int count=0;
+     int l=strlen(s);
+     for(int i=0;i<l;i++){
+         for(int j=0;j<10;j++){
+         if(s[i]==s1[j]){
+            count++;
+            break;
+         }
+            }
+     }
+     
+     return count;
+ }
+
+int main()
+{
+    //int size;
+    char arr[MAX];
+    //scanf("%d",&size);
+    scanf("%s",arr);
+     
+    printf("%d",vowel(arr));
+
+    return 0;
+}
+
+
+//write a function to check if it is alphaneumeric or not
+
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ int alpha(char s[]){
+     char s1[]="123456789";
+     //int count=0;
+     int l=strlen(s);
+     for(int i=0;i<l;i++){
+         for(int j=0;j<10;j++){  //if(s[i]>='0' && s[i]<='9') digit=1 if(s[i]>='a' && s[i]<='z') alpha =1
+         if(s[i]==s1[j])
+           return 1;
+            
+         
+         
+            }
+     }
+     
+     return 0;
+ }
+
+int main()
+{
+    //int size;
+    char arr[MAX];
+    //scanf("%d",&size);
+    scanf("%s",arr);
+    if(alpha(arr))
+       printf("yes");
+    else 
+       printf("no");
+     
+//    printf("%d",alpha(arr));
+
+    return 0;
+}
+
+//write a function to check wge=heather a given string contains a given pattern or not
+
+
+
+eg ='aabbaabaabba'
+pattern ='aaa'
+
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ int findpattern(char s[],char p[]){
+     int count=strlen(p);
+     int n=count;
+     
+     
+     int l=strlen(s);
+     for(int i=0,j=0;i<l;i++){
+         if(s[i]==p[j]){
+             count--;
+             j++;
+             if(count==0){
+                 break;
+             }
+         }
+         else 
+             count=n;
+             j=0;
+         }
+     
+     if(count==0)
+        return 1;
+     else 
+        return 0;
+         
+     }
+             
+     
+ 
+
+int main()
+{
+    //int size;
+    char s[MAX];
+    char p[]="aaa";
+    //scanf("%d",&size);
+    scanf("%s",s);
+    if(findpattern(s,p))
+       printf("yes");
+    else 
+       printf("no");
+     
+//    printf("%d",alpha(arr));
+
+    return 0;
+}
+
+//another approach to pattern function;
+
+
+int printpattern(char s1[],char s2[])
+{
+int x= strlen(s1)-strlen(s2);
+for(int i=0;i<x;i++)
+{
+for(int j=i,int k=0;s2[k];j++,k++){
+   if(s2[k]!=s1[j])
+      break;
+
+}
+  if(k==3)
+     return i;
+
+}
+
+ return -1
+}
+
+//two strins are equal or not--------
+
+
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ int scomp(char s1[],char s2[]){
+     int flag=0;
+    int l1=strlen(s1);
+     int l2=strlen(s2);
+     for(int i=0;i<l1;i++){
+         if(s1[i]!=s2[i] || l1!=l2){
+             flag=1;
+             break;
+         }
+            
+           
+         
+     }
+     if(flag)
+        return 1;
+     else 
+        return 0;
+             
+ }  
+ 
+
+int main()
+{
+    //int size;
+    char s1[MAX];
+    char s2[MAX];
+    //scanf("%d",&size);
+       scanf("%s%s",s1,s2);
+       printf("%d",scomp(s1,s2));
+     
+//    printf("%d",alpha(arr));
+
+    return 0;
+}
+
+
+
+//write a function to compare two strings 
+if both are the same then 0;
+if they are in dictionary order then -1;
+if they are in opposite of the dictionary order then 1;
+
+compare the ascii codes
+
+
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+ int scomp(char s1[],char s2[]){
+     int i=0;
+     while(s1[i]!='\0' && s2[i]!='\0')
+     {
+         if(s1[i]==s2[i]){
+             i++;
+         }
+         else if(s1[i]>s2[i])
+             return 1;
+             
+         else 
+            return -1;
+     }
+     if(s1[i]==0 && s2[i]==0)
+         return 0;
+     else if(s1[i]==0)
+        return -1;
+     else if(s2[i]==0)
+        return 1;
+         
+     
+        
+    
+             
+ }  
+ 
+
+int main()
+{
+    //int size;
+    char s1[MAX];
+    char s2[MAX];
+    //scanf("%d",&size);
+       scanf("%s%s",s1,s2);
+       printf("%d",scomp(s1,s2));
+     
+//    printf("%d",alpha(arr));
+
+    return 0;
+}
+
+
+//write a function to sort name of cities
+
+void sort_str(char *arr[],int n // no of the strings){
+  
+//if the two strings in reverse dictionary order then we will apply //swapping logic---------------->
+for(int i=1;i<=n-1;i++){
+  for(int j=1;j<n-1-i;j++){
+//bubble sort logic---------->>>>>>>>
+    int r =strcmp(arr[i],arr[i+1]);
+    if(r==1){
+        strcpy(temp,arr[i]);
+        strcpy(arr[i],arr[i+1]);
+        strcpy(arr[i+1],temp]);
+}    
+
+}
+
+
+}
+
+
+
+
+}
+
+
+ //1  4 5 6 2 8 0 9
