@@ -493,6 +493,36 @@ for(int j=i,int k=0;s2[k];j++,k++){
 
 }
 
+how are you---------->> h%w a#e YOU
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	string str1,str2,str3;
+	cin>>str1>>str2>>str3;
+	string vowel="aeiou";
+	for(int i=0;i<str1.size();i++){
+		for(int j=0;j<vowel.size();j++){
+		if(str1[i]==vowel[j])
+			str1[i]='%';
+	}
+}
+	for(int i=0;i<str2.size();i++){
+		if(str2[i]!='a' && str2[i]!='e'&&str2[i]!='i'&&str2[i]!='o'&&str2[i]!='u' ){
+			str2[i]='#';
+		}
+			
+		
+	
+}
+	transform(str3.begin(), str3.end(), str3.begin(), ::toupper);
+//while(str2[i]!='\0'){
+        // use ascii}
+    cout<<str1<<" "<<str2<<" "<<str3<<endl;
+	return 0;
+}
+	
+	
  return -1
 }
 
