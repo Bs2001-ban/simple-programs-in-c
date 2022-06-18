@@ -619,3 +619,33 @@ for(int i=1;i<=n-1;i++){
 
 
  //1  4 5 6 2 8 0 9
+
+
+//1 1 2 3 4 9 8 27 16 81 32------------------
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int findeven(int n)
+{
+	int m=n/2;
+	int x=pow(3,m-1);
+	return x;
+}
+int findodd(int n){
+	int m=n/2;
+	int x=pow(2,m);
+	return x;
+}
+
+int main(){
+	int n;cin>>n;
+    if(n%2==0){
+    	cout<<findeven(n)<<endl;
+    }
+    else 
+    	cout<<findodd(n)<<endl;
+	return 0;
+}
+	
+pattern printing-------------------
